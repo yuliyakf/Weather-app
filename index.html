@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/styles.css">
+    <link href=https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css>
     <title>Weather app</title>
 </head>
 <body>
@@ -14,58 +15,61 @@
     <div class="container">
        <div class="container1">
             <h1> Search for a City:</h1>
-            <form id="search">
+            
                 <input type="text" class="city" id="city" name="city" placeholder="San Diego"><br>
-                <input type="submit" id="searchBtn" value="Search">
-            </form>
+                <button  id="searchBtn">Search</button>
+         
             <hr>
-            <div id="historyItem"><h2>hi</h2></div>
+            <div id="historyItem"><h2></h2></div>
         </div>
 
        <div class="container2">
         <div class="results">
-            <span id="displayCity">HI</span><br>
-            <span class="display" id="temp">hi</span><br>
-            <span  class="display" id="wind">hi</span><br>
-            <span  class="display" id="humidity">hi</span><br>
+            <span id="displayCity"></span>
+            <span data-date></span>
+            <img class="icon" src="/images/cloud-bolt-solid (1).svg" data-current-icon> <br> 
+            <span data-current-temp class="display" id="temp"></span>&deg;<br>
+            <span data-current-desc class="display" id="description"></span><br>
+            <span data-current-wind class="display" id="wind"></span> mph<br>
+            <span data-current-humidity class="display" id="humidity"></span> %<br>
         </div>
         <br>
         <h2>5-Day Forecast:</h2>
         <div class="card-container">
             <div class="card">
                 <span id="dateCard">hi</span><br>
-                <span id="symbol">hi</span><br>
+                <img class="icon" data-icon> <br>
                 <span id="tempCard">hi</span><br>
                 <span id="windCard">hi</span><br>
                 <span id="humidityCard">hi</span><br>
             </div>
             <div class="card">
                 <span id="dateCard">hi</span><br>
-                <span id="symbol">hi</span><br>
+                <img class="icon" data-icon> <br>
                 <span id="tempCard">hi</span><br>
                 <span id="windCard">hi</span><br>
                 <span id="humidityCard">hi</span><br>
             </div>
             <div class="card">
                 <span id="dateCard">hi</span><br>
-                <span id="symbol">hi</span><br>
+                <img class="icon" data-icon> <br>
                 <span id="tempCard">hi</span><br>
                 <span id="windCard">hi</span><br>
                 <span id="humidityCard">hi</span><br>
             </div>
             <div class="card">
                 <span id="dateCard">hi</span><br>
-                <span id="symbol">hi</span><br>
+                <img class="icon" data-icon> <br>
                 <span id="tempCard">hi</span><br>
                 <span id="windCard">hi</span><br>
                 <span id="humidityCard">hi</span><br>
             </div>
             <div class="card">
-                <span id="dateCard">hi</span><br>
-                <span id="symbol">hi</span><br>
-                <span id="tempCard">hi</span><br>
-                <span id="windCard">hi</span><br>
-                <span id="humidityCard">hi</span><br>
+                <span id="dateCard" data-date>hi</span><br>
+                <img class="icon" data-icon> <br>
+                <span id="tempCard" data-temp>hi</span><br>
+                <span id="windCard" data-wind>hi</span><br>
+                <span id="humidityCard" data-humidity>hi</span><br>
             </div>
             
         </div>

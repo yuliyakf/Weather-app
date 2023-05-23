@@ -97,3 +97,8 @@
     font-size: 17px;
     font-weight: lighter;
 }
+.icon{
+    width: 25px;
+    height: 25px;
+    object-fit: contain;
+}
