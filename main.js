@@ -5,7 +5,7 @@ let displayCity=document.getElementById("displayCity")
 let temp = document.getElementById('temp')
 let wind= document.getElementById('wind')
 let humidity=document.getElementById('humidity')
-let historyItem = document.getElementById('historyItem')
+let historyItem = document.querySelector('.historyItem')
 let description= document.getElementById('description')
 
 searchBtn.addEventListener("click", searchFunc);
@@ -14,7 +14,7 @@ function searchFunc(e){
   
     if(searchBtn){
         fetchData(city.value);   
-    setStorage();
+    setCity();
       city.value='';
     }
 }
@@ -25,9 +25,9 @@ function fetchData(value){
     .then((res)=>res.json())
     .then((weather)=>{
         displayCity.innerHTML=weather.name;
-        temp.innerHTML= weather.main.temp;
+        temp.innerHTML= Math.round(weather.main.temp);
         description.innerHTML=weather.weather[0].main;
-        wind.innerHTML= weather.wind.speed;
+        wind.innerHTML= Math.round(weather.wind.speed);
         humidity.innerHTML=weather.main.humidity;  
     })
     .catch((error)=>console.log(error))
@@ -35,20 +35,13 @@ function fetchData(value){
 }
 
 function setStorage(){
-    if(!localStorage.getItem('city.value')){
-        populateStorage();
-    }else {
-        setCity();
-    }
-}
-
-function populateStorage(){
-    localStorage.setItem("city", city.value)
+    localStorage.setItem('city', city.value)
     setCity();
 }
-function setCity(){
-    historyItem.innerHTML=localStorage.getItem("city")
 
+function setCity(){ 
+    historyItem.classList.add("archivedItems");
+    historyItem.innerHTML=localStorage.getItem('city');
 }
 
 
