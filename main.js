@@ -39,6 +39,7 @@ let icon2=document.querySelector('.icon2')
 let icon3=document.querySelector('.icon3')
 let icon4=document.querySelector('.icon4')
 let icon5=document.querySelector('.icon5')
+let historyBox=document.querySelector('.historyBox')
 let today= new Date().toLocaleDateString();
 
 
@@ -50,10 +51,13 @@ function searchFunc(e){
   
  date.innerHTML= today;
     if(searchBtn){
-        fetchData(city.value);   
-    setCity();
-      city.value='';
-    }
+        fetchData(city.value); 
+           
+    //setCity();
+      
+      setStorage();
+    }city.value='';
+
 }
 
 function fetchData(value){
@@ -77,19 +81,22 @@ function fetchData(value){
 
         setFiveDay(forecast);
     })
-    setStorage(); 
+    
 }
-
+let cityArr=[]
 function setStorage(){
-    localStorage.setItem('city', city.value)
-    setCity();
-}
+  let historyCities=JSON.parse(localStorage.getItem('cityArr'))
+    cityArr.push(city.value)
+    localStorage.setItem('cityArr', JSON.stringify(cityArr))
 
-function setCity(){ 
-    historyItem.classList.add("archivedItems");
-    historyItem.innerHTML=localStorage.getItem('city');
-}
+    //historyCities.forEach(function(historyItem){
+    
+        historyItem.classList.add("archivedItems");
+    historyItem.innerHTML=historyCities;
 
+   // })
+ 
+}
 
 
 function setFiveDay(forecast){
