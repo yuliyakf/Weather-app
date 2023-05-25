@@ -1,4 +1,5 @@
 
+
 let city=document.getElementById("city");
 let searchBtn=document.getElementById("searchBtn")
 let displayCity=document.getElementById("displayCity")
@@ -41,21 +42,16 @@ let icon4=document.querySelector('.icon4')
 let icon5=document.querySelector('.icon5')
 let historyBox=document.querySelector('.historyBox')
 let today= new Date().toLocaleDateString();
+let archivedItems = document.querySelectorAll('.archivedItems')
 
 
 searchBtn.addEventListener("click", searchFunc);
 
-
-
-function searchFunc(e){
-  
- date.innerHTML= today;
+function searchFunc(){ 
+    date.innerHTML= today;
     if(searchBtn){
         fetchData(city.value); 
-           
-    //setCity();
-      
-      setStorage();
+        setStorage();
     }city.value='';
 
 }
@@ -78,26 +74,44 @@ function fetchData(value){
          }else if(description.innerHTML == "Rain"){
              icon1.src = "./images/cloud-rain-solid.svg"
          }
-
         setFiveDay(forecast);
     })
     
 }
-let cityArr=[]
-function setStorage(){
-  let historyCities=JSON.parse(localStorage.getItem('cityArr'))
-    cityArr.push(city.value)
-    localStorage.setItem('cityArr', JSON.stringify(cityArr))
+    let cityArr=[]
 
-    //historyCities.forEach(function(historyItem){
+    function setStorage(){
+        JSON.parse(localStorage.getItem('cityArr'))
+        cityArr.push(city.value)
+        localStorage.setItem('cityArr', JSON.stringify(cityArr))
+
+        cityArr.forEach(function(value){
+            cityArr.shift(city.value)
+            
+            let newDiv = document.createElement('button')
+            newDiv.innerHTML=value
+            newDiv.classList.add("archivedItems")  
+            historyBox.appendChild(newDiv)  
+         })
+    }
+
+    historyBox.addEventListener('click', function (e){
+        if (e.target.tagName === "BUTTON"){
+        const button= e.target;
+        if(button.className==="archivedItems"){
+            console.log('hi')
+            }}
+        })
     
-        historyItem.classList.add("archivedItems");
-    historyItem.innerHTML=historyCities;
-
-   // })
- 
-}
-
+        cityArr.forEach(function(value){
+        cityArr.shift(city.value)
+        
+        let newDiv = document.createElement('button')
+        newDiv.innerHTML=value
+        newDiv.classList.add("archivedItems")
+        
+        historyBox.appendChild(newDiv)  
+     })
 
 function setFiveDay(forecast){
     //tomorrow index 8
@@ -125,4 +139,3 @@ function setFiveDay(forecast){
 
 
 //fetch('https://api.openweathermap.org/data/2.5/forecast?q=london&appid=c72883eda9179bf6e121bd23941488cd').then((res)=>res.json()).then(console.log)
-
