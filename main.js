@@ -1,5 +1,3 @@
-
-
 let city=document.getElementById("city");
 let searchBtn=document.getElementById("searchBtn")
 let displayCity=document.getElementById("displayCity")
@@ -99,7 +97,7 @@ function fetchData(value){
         if (e.target.tagName === "BUTTON"){
         const button= e.target;
         if(button.className==="archivedItems"){
-            console.log('hi')
+            fetchData(button.innerHTML)
             }}
         })
     
@@ -112,6 +110,8 @@ function fetchData(value){
         
         historyBox.appendChild(newDiv)  
      })
+
+     //function fetchHistory(in)
 
 function setFiveDay(forecast){
     //tomorrow index 8
